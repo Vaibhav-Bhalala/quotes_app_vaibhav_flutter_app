@@ -13,6 +13,7 @@ class QuotesScreen extends StatefulWidget {
 
 class _QuotesScreenState extends State<QuotesScreen> {
   late List<Quotes> Quotedata;
+  bool istoggled = false;
 
   @override
   void initState() {
@@ -24,7 +25,6 @@ class _QuotesScreenState extends State<QuotesScreen> {
   @override
   Widget build(BuildContext context) {
     int count = 1;
-    bool istoggled = false;
 
     return Scaffold(
         appBar: AppBar(
@@ -59,50 +59,108 @@ class _QuotesScreenState extends State<QuotesScreen> {
           centerTitle: true,
         ),
         floatingActionButton: FloatingActionButton(
-            backgroundColor: Colors.white.withOpacity(0.2),
-            onPressed: () {
-              setState(() {
-                istoggled = !istoggled;
-              });
-            },
-            child: (istoggled) ? Icons.grid_3x3 : Icons.list),
-        body: Scrollbar(
-          radius: Radius.circular(10),
-          interactive: true,
-          thickness: 10,
-          child: ListView.builder(
-              itemCount: Quotedata.length,
-              itemBuilder: (BuildContext context, int i) => Card(
-                    child: Container(
-                      padding: EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                          color: Colors.pinkAccent,
-                          image: DecorationImage(
-                              image: NetworkImage(
-                                  "https://w0.peakpx.com/wallpaper/573/4/HD-wallpaper-black-ornaments-texture-black-background-floral-ornaments-background-black-texture.jpg"),
-                              fit: BoxFit.cover)),
-                      alignment: Alignment.center,
-                      height: 200,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Text(
-                            "${Quotedata[i].quote}",
-                            style: TextStyle(
-                                fontSize: 20,
-                                color: Colors.white.withOpacity(0.50)),
+          backgroundColor: Colors.white.withOpacity(0.2),
+          onPressed: () {
+            setState(() {
+              istoggled = !istoggled;
+            });
+          },
+          child:
+              Icon((istoggled == true) ? Icons.grid_3x3_rounded : Icons.list),
+        ),
+        body: Stack(
+          children: [
+            Container(
+              height: double.infinity,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: NetworkImage(
+                          "https://st4.depositphotos.com/4790623/24384/i/450/depositphotos_243842048-stock-photo-red-sunset-and-moon-beautiful.jpg"),
+                      fit: BoxFit.cover)),
+            ),
+            (istoggled == true)
+                ? ListView.builder(
+                    itemCount: Quotedata.length,
+                    itemBuilder: (BuildContext context, int i) => Card(
+                          child: Container(
+                            padding: EdgeInsets.all(10),
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: Colors.pinkAccent,
+                                image: DecorationImage(
+                                    image: NetworkImage(
+                                        "https://img.freepik.com/premium-photo/3d-rendering-dark-geometric-background-copy-space-advertising-product-display_733139-845.jpg"),
+                                    fit: BoxFit.cover)),
+                            alignment: Alignment.center,
+                            height: 200,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Text(
+                                  "${Quotedata[i].quote}",
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      color: Colors.white.withOpacity(0.65)),
+                                ),
+                                Text(
+                                  "- ${Quotedata[i].author}",
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white.withOpacity(0.75)),
+                                ),
+                              ],
+                            ),
                           ),
-                          Text(
-                            "- ${Quotedata[i].author}",
-                            style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white.withOpacity(0.50)),
-                          ),
-                        ],
+                        ))
+                : Scrollbar(
+                    radius: Radius.circular(10),
+                    interactive: true,
+                    thickness: 10,
+                    child: GridView.builder(
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        mainAxisSpacing: 0,
+                        crossAxisSpacing: 0,
                       ),
-                    ),
-                  )),
+                      itemBuilder: (BuildContext Context, int i) => Container(
+                        margin: EdgeInsets.all(10),
+                        padding: EdgeInsets.all(15),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: Colors.pinkAccent,
+                            image: DecorationImage(
+                                image: NetworkImage(
+                                    "https://img.freepik.com/premium-photo/3d-rendering-dark-geometric-background-copy-space-advertising-product-display_733139-845.jpg"),
+                                fit: BoxFit.cover)),
+                        alignment: Alignment.center,
+                        height: 200,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Container(
+                              height: 100,
+                              child: Text(
+                                "${Quotedata[i].quote}",
+                                style: TextStyle(
+                                    fontSize: 20,
+                                    color: Colors.white.withOpacity(0.65)),
+                                overflow: TextOverflow.fade,
+                              ),
+                            ),
+                            Text(
+                              "- ${Quotedata[i].author}",
+                              style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white.withOpacity(0.75)),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ))
+          ],
         ));
   }
 }
