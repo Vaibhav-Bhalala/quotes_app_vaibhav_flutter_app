@@ -28,6 +28,7 @@ class _QuotesScreenState extends State<QuotesScreen> {
 
     return Scaffold(
         appBar: AppBar(
+          backgroundColor: Colors.green.withOpacity(0.80),
           leading: IconButton(
             onPressed: () {
               showDialog(
@@ -59,7 +60,7 @@ class _QuotesScreenState extends State<QuotesScreen> {
           centerTitle: true,
         ),
         floatingActionButton: FloatingActionButton(
-          backgroundColor: Colors.white.withOpacity(0.2),
+          backgroundColor: Colors.grey.withOpacity(0.4),
           onPressed: () {
             setState(() {
               istoggled = !istoggled;
@@ -76,7 +77,7 @@ class _QuotesScreenState extends State<QuotesScreen> {
               decoration: BoxDecoration(
                   image: DecorationImage(
                       image: NetworkImage(
-                          "https://st4.depositphotos.com/4790623/24384/i/450/depositphotos_243842048-stock-photo-red-sunset-and-moon-beautiful.jpg"),
+                          "https://w0.peakpx.com/wallpaper/895/512/HD-wallpaper-mountain-river-rocks-forest-summer-mountain-landscape-environment-ecology.jpg"),
                       fit: BoxFit.cover)),
             ),
             (istoggled == true)
@@ -89,9 +90,10 @@ class _QuotesScreenState extends State<QuotesScreen> {
                                 borderRadius: BorderRadius.circular(10),
                                 color: Colors.pinkAccent,
                                 image: DecorationImage(
-                                    image: NetworkImage(
-                                        "https://img.freepik.com/premium-photo/3d-rendering-dark-geometric-background-copy-space-advertising-product-display_733139-845.jpg"),
-                                    fit: BoxFit.cover)),
+                                  image: NetworkImage(
+                                      "https://images.pexels.com/photos/3178786/pexels-photo-3178786.jpeg?cs=srgb&dl=pexels-andrew-neel-3178786.jpg&fm=jpg"),
+                                  fit: BoxFit.cover,
+                                )),
                             alignment: Alignment.center,
                             height: 200,
                             child: Column(
@@ -132,7 +134,7 @@ class _QuotesScreenState extends State<QuotesScreen> {
                             color: Colors.pinkAccent,
                             image: DecorationImage(
                                 image: NetworkImage(
-                                    "https://img.freepik.com/premium-photo/3d-rendering-dark-geometric-background-copy-space-advertising-product-display_733139-845.jpg"),
+                                    "https://images.pexels.com/photos/3178786/pexels-photo-3178786.jpeg?cs=srgb&dl=pexels-andrew-neel-3178786.jpg&fm=jpg"),
                                 fit: BoxFit.cover)),
                         alignment: Alignment.center,
                         height: 200,

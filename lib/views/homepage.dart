@@ -31,6 +31,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Home Page"),
+        backgroundColor: Globals.themecolor,
         centerTitle: true,
         actions: [
           IconButton(
@@ -53,17 +54,52 @@ class _HomePageState extends State<HomePage> {
               icon: Icon(Icons.refresh))
         ],
       ),
-      body: Center(
-          child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+      body: Stack(
         children: [
-          ElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, 'Quote screen');
-              },
-              child: Text("See More"))
+          Container(
+            height: double.infinity,
+            width: double.infinity,
+            decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: NetworkImage(
+                        "https://w0.peakpx.com/wallpaper/895/512/HD-wallpaper-mountain-river-rocks-forest-summer-mountain-landscape-environment-ecology.jpg"),
+                    fit: BoxFit.cover)),
+          ),
+          Center(
+              child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Container(
+                margin: EdgeInsets.all(50),
+                height: 300,
+                width: 300,
+                decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Colors.greenAccent,
+                    image: DecorationImage(
+                        image: NetworkImage(
+                            "https://cdn.dribbble.com/users/3001763/screenshots/6424725/q_dribbble_800x600.gif"),
+                        fit: BoxFit.cover)),
+              ),
+              Column(children: [
+                TextFormField(
+                  keyboardType: TextInputType.emailAddress,
+                  decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20)),
+                      hintText: "E-mail",
+                      hintStyle: TextStyle()),
+                )
+              ]),
+              ElevatedButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, 'Quote screen');
+                  },
+                  child: Text("Log in"))
+            ],
+          )),
         ],
-      )),
+      ),
     );
   }
 }
