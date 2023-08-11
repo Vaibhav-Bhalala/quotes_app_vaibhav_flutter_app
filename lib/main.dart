@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:quotes_app/Quotes_screen.dart';
 import 'package:quotes_app/components/utils/globals.dart';
+import 'package:quotes_app/views/Detail_screen.dart';
 import 'package:quotes_app/views/homepage.dart';
 
 void main() {
@@ -11,6 +12,7 @@ void main() {
     routes: {
       '/': (context) => HomePage(),
       'Quote screen': (context) => QuotesScreen(),
+      'Detail_screen': (context) => Detail_screen(),
     },
   ));
 }

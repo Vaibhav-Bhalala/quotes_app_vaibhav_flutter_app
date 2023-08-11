@@ -84,35 +84,41 @@ class _QuotesScreenState extends State<QuotesScreen> {
                 ? ListView.builder(
                     itemCount: Quotedata.length,
                     itemBuilder: (BuildContext context, int i) => Card(
-                          child: Container(
-                            padding: EdgeInsets.all(10),
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: Colors.pinkAccent,
-                                image: DecorationImage(
-                                  image: NetworkImage(
-                                      "https://images.pexels.com/photos/3178786/pexels-photo-3178786.jpeg?cs=srgb&dl=pexels-andrew-neel-3178786.jpg&fm=jpg"),
-                                  fit: BoxFit.cover,
-                                )),
-                            alignment: Alignment.center,
-                            height: 200,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Text(
-                                  "${Quotedata[i].quote}",
-                                  style: TextStyle(
-                                      fontSize: 20,
-                                      color: Colors.white.withOpacity(0.65)),
-                                ),
-                                Text(
-                                  "- ${Quotedata[i].author}",
-                                  style: TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white.withOpacity(0.75)),
-                                ),
-                              ],
+                          child: GestureDetector(
+                            onTap: () {
+                              Navigator.pushNamed(context, 'Detail_screen');
+                            },
+                            child: Container(
+                              padding: EdgeInsets.all(10),
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: Colors.pinkAccent,
+                                  image: DecorationImage(
+                                    image: NetworkImage(
+                                        "https://images.pexels.com/photos/3178786/pexels-photo-3178786.jpeg?cs=srgb&dl=pexels-andrew-neel-3178786.jpg&fm=jpg"),
+                                    fit: BoxFit.cover,
+                                  )),
+                              alignment: Alignment.center,
+                              height: 200,
+                              child: Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Text(
+                                    "${Quotedata[i].quote}",
+                                    style: TextStyle(
+                                        fontSize: 20,
+                                        color: Colors.white.withOpacity(0.65)),
+                                  ),
+                                  Text(
+                                    "- ${Quotedata[i].author}",
+                                    style: TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white.withOpacity(0.75)),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ))

@@ -66,37 +66,58 @@ class _HomePageState extends State<HomePage> {
                     fit: BoxFit.cover)),
           ),
           Center(
-              child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Container(
-                margin: EdgeInsets.all(50),
-                height: 300,
-                width: 300,
-                decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Colors.greenAccent,
-                    image: DecorationImage(
-                        image: NetworkImage(
-                            "https://cdn.dribbble.com/users/3001763/screenshots/6424725/q_dribbble_800x600.gif"),
-                        fit: BoxFit.cover)),
-              ),
-              Column(children: [
-                TextFormField(
-                  keyboardType: TextInputType.emailAddress,
-                  decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20)),
-                      hintText: "E-mail",
-                      hintStyle: TextStyle()),
-                )
-              ]),
-              ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, 'Quote screen');
-                  },
-                  child: Text("Log in"))
-            ],
+              child: Padding(
+            padding: EdgeInsets.all(16),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Container(
+                  margin: EdgeInsets.all(50),
+                  height: 300,
+                  width: 300,
+                  decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Colors.greenAccent,
+                      image: DecorationImage(
+                          image: NetworkImage(
+                              "https://cdn.dribbble.com/users/3001763/screenshots/6424725/q_dribbble_800x600.gif"),
+                          fit: BoxFit.cover)),
+                ),
+                Column(children: [
+                  TextFormField(
+                    keyboardType: TextInputType.emailAddress,
+                    decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20)),
+                        hintText: "E-Mail",
+                        hintStyle: TextStyle(
+                            color: Colors.yellow, fontWeight: FontWeight.bold)),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  TextFormField(
+                    keyboardType: TextInputType.phone,
+                    decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                            borderSide:
+                                BorderSide(width: 10, color: Colors.white),
+                            borderRadius: BorderRadius.circular(20)),
+                        hintText: "Mobile number",
+                        hintStyle: TextStyle(
+                            color: Colors.yellow, fontWeight: FontWeight.bold)),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                ]),
+                ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, 'Quote screen');
+                    },
+                    child: Text("Log in"))
+              ],
+            ),
           )),
         ],
       ),
