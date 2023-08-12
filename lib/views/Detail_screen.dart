@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quotes_app/components/utils/globals.dart';
+import 'package:quotes_app/model/quotes_model.dart';
 
 class Detail_screen extends StatefulWidget {
   const Detail_screen({super.key});
@@ -11,6 +12,7 @@ class Detail_screen extends StatefulWidget {
 class _Detail_screenState extends State<Detail_screen> {
   @override
   Widget build(BuildContext context) {
+    Quotes data = ModalRoute.of(context)!.settings.arguments as Quotes;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.green.withOpacity(0.80),
@@ -44,11 +46,19 @@ class _Detail_screenState extends State<Detail_screen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
                     boxShadow: [
-                      BoxShadow(offset: Offset(0, 5), blurRadius: 10)
+                      BoxShadow(
+                          offset: Offset(0, 5),
+                          blurRadius: 10,
+                          color: Colors.grey)
                     ],
                     color: Colors.white,
                   ),
-                  child: Column(children: []),
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Text("${data.quote}",style: TextStyle(fontSize: 20,),),
+                        Text("${data.author}")
+                      ]),
                 ),
               ],
             ),

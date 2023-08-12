@@ -86,7 +86,8 @@ class _QuotesScreenState extends State<QuotesScreen> {
                     itemBuilder: (BuildContext context, int i) => Card(
                           child: GestureDetector(
                             onTap: () {
-                              Navigator.pushNamed(context, 'Detail_screen');
+                              Navigator.pushNamed(context, 'Detail_screen',
+                                  arguments: Quotedata[i]);
                             },
                             child: Container(
                               padding: EdgeInsets.all(10),
